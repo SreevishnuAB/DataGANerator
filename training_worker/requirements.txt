@@ -1,0 +1,4 @@
+sqlalchemy==2.0.16
+table-evaluator==1.4.2
+sdv==1.2.0
+pandas==2.0.2

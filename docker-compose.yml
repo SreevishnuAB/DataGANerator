@@ -1,0 +1,25 @@
+version: '0.1.0'
+services:
+  api:
+    build:
+      dockerfile: ./api/Dockerfile
+    env_file:
+      - ./api/.env
+    volumes:
+      - ./files:/api/files
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    network_mode: host
+    restart: always
+  training_worker:
+    build:
+      dockerfile: ./training_worker/Dockerfile
+    env_file:
+      - ./training_worker/.env
+    volumes:
+      - ./files:/worker/files
+      - ./logs:/worker/logs
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    network_mode: host
+    restart: always
